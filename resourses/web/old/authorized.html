@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>РСК - Расписание</title>
+    <link rel="icon" href="https://i.postimg.cc/mgpvCCFd/rsklogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" title="theme" href="/static/theme-authorized-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<header>
+    <div class="burger-menu">
+        <div class="burger-icon" id="burgerIcon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="menu" id="menu">
+            <ul>
+                <li><i class="icon">👤</i> <a href="#">Войти</a></li>
+                <li class="settings-item">
+                    <i class="icon">⚙️</i> Настройки
+                    <ul class="submenu">
+                        <li><a href="#" onclick="applyTheme('light')">Светлая тема</a></li>
+                        <li><a href="#" onclick="applyTheme('dark')">Темная тема</a></li>
+                        <li><a href="#">Режим для слабовидящих</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="logo-holder">
+        <img class="logo" src="https://i.postimg.cc/mgpvCCFd/rsklogo.png" alt="logo">
+    </div>
+    <h1>Расписание НСК</h1>
+    <div style="margin-left:auto; margin-right:20px;">
+        <select id="daySelect" onchange="loadSchedule()">
+            <option value="1">Понедельник</option>
+            <option value="2">Вторник</option>
+            <option value="3">Среда</option>
+            <option value="4">Четверг</option>
+            <option value="5">Пятница</option>
+            <option value="6">Суббота</option>
+        </select>
+    </div>
+</header>
+
+<h2 id="info"></h2>
+<table id="table" border="1"></table>
+
+<script>
+const burgerIcon = document.getElementById('burgerIcon');
+const menu = document.getElementById('menu');
+
+burgerIcon.addEventListener('click', () => {
+    burgerIcon.classList.toggle('active');
+    menu.style.left = menu.style.left === '0px' ? '-250px' : '0px';
+});
+
+document.querySelector('.settings-item').addEventListener('click', (e) => {
+    e.stopPropagation();
+    const submenu = document.querySelector('.submenu');
+    submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+});
+
+document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target) && !burgerIcon.contains(e.target)) {
+        menu.style.left = '-250px';
+        burgerIcon.classList.remove('active');
+    }
+});
+
+function applyTheme(themeName) {
+    document.querySelector('[title="theme"]').setAttribute('href', `/static/theme-${themeName}.css`);
+    localStorage.setItem('theme', themeName);
+    document.querySelectorAll('.changeTheme').forEach(button => {
+        button.style.display = 'block';
+    });
+    document.querySelector(`[data-theme="${themeName}"]`).style.display = 'none';
+    document.body.classList.toggle('dark', themeName === 'dark');
+}
+
+if (localStorage.getItem('theme') === 'dark') applyTheme('dark');
+
+window.onload = loadSchedule;
+
+async function loadSchedule() {
+    const token = localStorage.getItem('token');
+    if (!token) return alert('Нет токена');
+    const res = await fetch('http://localhost:8000/user-info', {
+        headers: { 'Authorization': 'Bearer ' + token }
+    });
+    const user = await res.json();
+    const group = user.group;
+
+    let day = parseInt(document.getElementById('daySelect').value);
+    const days = ['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'];
+    document.getElementById('info').textContent = 'Расписание на: ' + days[day];
+
+    const raspRes = await fetch(`http://localhost:8000/group1?group=${group}&day_week=${day}`);
+    const raspData = await raspRes.json();
+
+    const table = document.getElementById('table');
+    table.innerHTML = '';
+    if (raspData.data) {
+        raspData.data.forEach(row => {
+            const tr = document.createElement('tr');
+            row.forEach(cell => {
+                const td = document.createElement('td');
+                td.textContent = cell;
+                tr.appendChild(td);
+            });
+            table.appendChild(tr);
+        });
+    }
+}
+</script>
+</body>
+</html>

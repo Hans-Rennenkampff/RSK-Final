@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>РСК - Расписание</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="https://i.postimg.cc/mgpvCCFd/rsklogo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Oswald&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="theme-authorized-light.css" title="theme" id="theme-link" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Lato', sans-serif;
+      background-color: white;
+      color: white;
+    }
+    body.dark {
+      background-color: black;
+    }
+    header {
+      position: relative;
+      padding: 20px 50px;
+      background-color: red;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    body.dark header {
+      background-color: #550000;
+    }
+    .logo-holder {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      min-width: 0;
+      gap: 10px;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+    }
+    .logo {
+      width: clamp(36px, 8vw, 48px);
+      height: auto;
+      max-height: 2em;
+      margin-right: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-family: 'Oswald', sans-serif;
+      color: white;
+    }
+    .burger-menu {
+      position: absolute;
+      top: 13px;
+      left: 20px;
+      z-index: 1100;
+    }
+    .burger-icon {
+      width: 30px;
+      height: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+    .burger-icon span {
+      display: block;
+      height: 4px;
+      background: white;
+      border-radius: 2px;
+    }
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background: red;
+      padding-top: 60px;
+      transition: left 0.3s ease;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+    .menu.open {
+      left: 0;
+    }
+    body.dark .menu {
+      background: #550000;
+    }
+    .menu ul {
+      list-style: none;
+      padding: 0;
+    }
+    .menu li {
+      padding: 15px 20px;
+      color: white;
+      cursor: pointer;
+    }
+    .menu li:hover,
+    .menu .submenu li a:hover {
+      background-color: #aa0000;
+    }
+    .menu .submenu {
+      display: none;
+      padding-left: 20px;
+    }
+    .settings-item:hover .submenu {
+      display: block;
+    }
+    .menu .submenu li a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+    }
+    .calendar-trigger {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      width: clamp(36px, 8vw, 48px);
+      height: clamp(36px, 8vw, 48px);
+      background-color: transparent;
+      border: none;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .calendar-menu {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      background: red;
+      display: none;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      padding: 10px;
+      border-radius: 10px;
+      z-index: 1000;
+      max-width: 90vw;
+      box-sizing: border-box;
+    }
+    body.dark .calendar-menu {
+      background: #550000;
+    }
+    .calendar-menu.active {
+      display: grid;
+    }
+    .calendar-menu button {
+      padding: 10px;
+      font-size: 14px;
+      border: none;
+      background-color: red;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .calendar-menu button:hover {
+      background-color: #aa0000;
+    }
+    .calendar-menu button.active {
+      outline: 2px solid white;
+      background-color: #aa0000;
+    }
+    #info {
+      text-align: center;
+      font-family: 'Oswald', sans-serif;
+      color: black;
+    }
+    body.dark #info {
+      color: white;
+    }
+    #table {
+      width: 95%;
+      max-width: 1000px;
+      margin: 0 auto 40px auto;
+      font-family: 'Oswald', sans-serif;
+      border-collapse: collapse;
+      text-align: center;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      background-color: red;
+      color: black;
+    }
+    #table th,
+    #table td {
+      background-color: rgba(255,255,255,0.05);
+      padding: 14px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    #table tr:nth-child(even) {
+      background-color: #f9f9f9;
+      transition: background-color 0.3s ease;
+    }
+    #table tr:hover {
+      background-color: #ffe5e5;
+      transition: background-color 0.3s ease;
+    }
+    body.dark #table tr {
+      background-color: #550000;
+      color: white;
+    }
+    body.dark #table tr:nth-child(even) {
+      background-color: #661111;
+    }
+    body.dark #table tr:hover {
+      background-color: #444;
+    }
+  @media (max-width: 768px) {
+      .logo-holder {
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 10px;
+        align-items: center;
+      }
+      .calendar-trigger {
+        top: unset;
+        bottom: 10px;
+        width: 30px;
+        right: 10px;
+        transform: none;
+      }
+      .logo-holder {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+      .calendar-trigger {
+        top: 13px;
+        right: 10px;
+        width: 30px;
+        height: 28px;
+        font-size: 20px;
+      }
+      header {
+        flex-direction: row;
+        padding: 10px;
+      }
+      .logo-holder {
+        justify-content: center;
+        flex-direction: row;
+        text-align: center;
+      }
+      h1 {
+        font-size: 20px;
+      }
+      .calendar-trigger {
+        top: 13px;
+        right: 10px;
+        width: 30px;
+      }
+      #table th,
+      #table td {
+        font-size: 13px;
+        padding: 8px;
+      }
+      .calendar-menu {
+        top: 60px;
+        right: 10px;
+        transform: none;
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .calendar-menu button {
+        font-size: 12px;
+        padding: 8px;
+      }
+    }
+      .logo-holder {
+        justify-content: center;
+        flex-direction: row;
+        text-align: center;
+      }
+      h1 {
+        font-size: 20px;
+      }
+      .calendar-trigger {
+        top: 13px;
+        width: 30px;
+        right: 10px;
+      }
+      #table th,
+      #table td {
+        font-size: 13px;
+        padding: 8px;
+      }
+      .calendar-menu {
+        grid-template-columns: repeat(2, 1fr);
+        right: 10px;
+      }
+    
+  </style>
+</head>
+<body>
+  <header>
+    <div class="burger-menu">
+      <div class="burger-icon" id="burgerIcon">
+        <span></span><span></span><span></span>
+      </div>
+      <nav class="menu" id="menu">
+        <ul>
+          <li onclick="logout()">🚪 Выйти</li>
+          <li class="settings-item">
+            ⚙️ Настройки
+            <ul class="submenu">
+              <li><a href="#" onclick="applyTheme('light')">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18" style="vertical-align: middle; margin-right: 6px;">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.36 6.36l-1.42-1.42M6.34 6.34l-1.42-1.42m12.02 0l1.42 1.42M6.34 17.66l1.42 1.42M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                </svg>
+                Светлая тема</a></li>
+              <li><a href="#" onclick="applyTheme('dark')">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18" style="vertical-align: middle; margin-right: 6px;">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
+                </svg>
+                Тёмная тема</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="logo-holder" style="display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0;">
+      <img class="logo" src="https://i.postimg.cc/mgpvCCFd/rsklogo.png" alt="logo"/>
+      <h1 id="headerTitle" style="margin: 0;">РАСПИСАНИЕ НСК</h1>
+    </div>
+    <button class="calendar-trigger" onclick="toggleCalendarMenu()">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="width: 100%; height: 100%;" preserveAspectRatio="xMidYMid meet">
+    <path d="M64 64C46.3 64 32 78.3 32 96V416c0 17.7 14.3 32 32 32H448c17.7 0 32-14.3 32-32V96c0-17.7-14.3-32-32-32H64zM448 160v256H64V160H448zM144 208c-8.8 0-16 7.2-16 16s7.2 16 16 16h224c8.8 0 16-7.2 16-16s-7.2-16-16-16H144z" />
+  </svg>
+</button>
+    <div class="calendar-menu" id="calendarMenu">
+      <button onclick="selectDay(1)">ПН</button>
+      <button onclick="selectDay(2)">ВТ</button>
+      <button onclick="selectDay(3)">СР</button>
+      <button onclick="selectDay(4)">ЧТ</button>
+      <button onclick="selectDay(5)">ПТ</button>
+      <button onclick="selectDay(6)">СБ</button>
+    </div>
+  </header>
+
+  <h2 id="info">РАСПИСАНИЕ НА: </h2>
+  <table id="table"></table>
+
+  <script>
+    function applyTheme(theme) {
+      const themeLink = document.getElementById("theme-link");
+      themeLink.href = `theme-authorized-${theme}.css`;
+      document.body.classList.toggle("dark", theme === "dark");
+      updateThemeOptions(theme);
+    }
+
+    function toggleCalendarMenu() {
+      const calendarMenu = document.getElementById('calendarMenu');
+      calendarMenu.classList.toggle('active');
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('open');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const burgerIcon = document.getElementById('burgerIcon');
+      const calendarMenu = document.getElementById('calendarMenu');
+      const menu = document.getElementById('menu');
+
+      burgerIcon.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!calendarMenu.contains(e.target) && !e.target.closest('.calendar-trigger')) {
+          calendarMenu.classList.remove('active');
+        }
+        if (!menu.contains(e.target) && !burgerIcon.contains(e.target)) {
+          menu.classList.remove('open');
+        }
+      });
+
+      const hiddenSelect = document.createElement("select");
+      hiddenSelect.id = "daySelect";
+      hiddenSelect.style.display = "none";
+      for (let i = 1; i <= 6; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.text = i;
+        hiddenSelect.appendChild(option);
+      }
+      document.body.appendChild(hiddenSelect);
+
+      selectDay(1);
+    });
+
+    function updateThemeOptions(currentTheme) {
+      const lightOption = document.querySelector('li a[onclick*="light"]').parentElement;
+      const darkOption = document.querySelector('li a[onclick*="dark"]').parentElement;
+
+      if (currentTheme === 'dark') {
+        darkOption.style.display = 'none';
+        lightOption.style.display = 'block';
+        document.getElementById("headerTitle").style.color = "white";
+      } else {
+        lightOption.style.display = 'none';
+        darkOption.style.display = 'block';
+        document.getElementById("headerTitle").style.color = "black";
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem("token");
+      window.location.href = "auth.html";
+    }
+
+    function selectDay(day) {
+      const hiddenSelect = document.getElementById("daySelect");
+      if (hiddenSelect) {
+        hiddenSelect.value = day;
+        loadSchedule();
+      }
+      document.getElementById('calendarMenu').classList.remove('active');
+
+      // Подсветка выбранной кнопки
+      const buttons = document.querySelectorAll('#calendarMenu button');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      if (buttons[day - 1]) buttons[day - 1].classList.add('active');
+    }
+
+    async function loadSchedule() {
+      const token = localStorage.getItem("token");
+      if (!token) return alert("Нет токена");
+
+      const res = await fetch("http://localhost:8000/user-info", {
+        headers: { Authorization: "Bearer " + token }
+      });
+      const user = await res.json();
+      const group = user.group;
+
+      const day = parseInt(document.getElementById("daySelect").value);
+      const days = ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"];
+      document.getElementById("info").textContent = "РАСПИСАНИЕ НА: " + days[day];
+
+      const raspRes = await fetch(`http://localhost:8000/group1?group=${group}&day_week=${day}`);
+      const raspData = await raspRes.json();
+
+      const table = document.getElementById("table");
+      table.innerHTML = "";
+      if (raspData.data) {
+        raspData.data.forEach(row => {
+          const tr = document.createElement("tr");
+          row.forEach(cell => {
+            const td = document.createElement("td");
+            td.textContent = cell;
+            tr.appendChild(td);
+          });
+          table.appendChild(tr);
+        });
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>РСК</title>
+  <link rel="stylesheet" href="theme-light.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&family=Oswald&display=swap" rel="stylesheet">
+</head>
+<body>
+ <header>
+  <ul class="menu">
+  <li>
+    <img class="menu-ico" src="https://i.imgur.com/zxvZsAs.png" alt="menu">
+    <ul>
+      <li><a href="index.html">вернуться к студентам</a>
+      </li>
+      <li>
+        <a href="#">для слабовидящих</a>
+      </li>
+      <li><a href="#">График</a></li>
+    </ul>
+  <div class="logo-holder">
+<img  class="logo" src="https://i.imgur.com/ZERYXkF.png" alt="oops, logo isnt work">
+</div>
+  <h1>Расписание НСК</h1>
+
+</header>
+
+  <div class="curse">выберите курс:</div>
+  <div class="choose_curse">
+  <!--- выбор курса---->
+  <div  class="wrapper2";>
+      <!-- при нажатии появляется\прячится группы 1 курса по id hidden1  -->
+      <a href="javascript:showhide('hidden1')" class="wave-btn" id="1_curse">
+        <span class="wave-btn__text">1</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="curse 2";>
+      <!-- при нажатии появляется\прячится группы 2 курса по id hidden1 -->
+      <a href="javascript:showhide('hidden2')" class="wave-btn">
+        <span class="wave-btn__text">2</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="curse 3";>
+      <!-- при нажатии появляется\прячится группы 3 курса по id hidden1 -->
+      <a href="javascript:showhide('hidden3')" class="wave-btn">
+        <span class="wave-btn__text">3</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="curse 4";>
+      <!-- при нажатии появляется\прячится группы 4 курса по id hidden1 -->
+      <a href="javascript:showhide('hidden4')" class="wave-btn">
+        <span class="wave-btn__text">4</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div>
+    </div>
+    <!--группы 1 курса-->
+<div id="hidden1" style="display:none;" class="wrapper">
+ <div class="group">выберите группу:</div>
+    <div class="wrapper2"; id="МСА-22";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn" id="МСА-22";>
+        <span class="wave-btn__text" id="МСА-22";>МСА-22</span>
+        <span class="wave-btn__waves" id="МСА-22";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ГЭС-22">
+        <a type="button" href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ГЭС-22">ГЭС-22</span>
+        <span class="wave-btn__waves"; id="ГЭС-22" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="КИП-22">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="КИП-22">КИП-22</span>
+        <span class="wave-btn__waves"; id="КИП-22"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="МСД-22";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСД-22";>МСД-22</span>
+        <span class="wave-btn__waves"; id="МСД-22";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="МСД-22-К";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСД-22-К";>МСД-22-К</span>
+        <span class="wave-btn__waves"; id="МСД-22-К";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ПК-22">
+        <a type="button" href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ПК-22">ПК-22</span>
+        <span class="wave-btn__waves"; id="ПК-22" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="МСТ-22">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСТ-22">МСТ-22</span>
+        <span class="wave-btn__waves"; id="МСТ-22"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ОП-106";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ОП-106";>ОП-106</span>
+        <span class="wave-btn__waves"; id="ОП-106";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ПВ-107";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ПВ-107";>ПВ-107</span>
+        <span class="wave-btn__waves"; id="ПВ-107";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ДИ-22">
+      <!-- Контент -->
+      <a  href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ДИ-22">ДИ-22</span>
+        <span class="wave-btn__waves"; id="ДИ-22" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ПГС-22">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ПГС-22">ПГС-22</span>
+        <span class="wave-btn__waves"; id="ПГС-22"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="АД-22";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="АД-22";>АД-22</span>
+        <span class="wave-btn__waves"; id="АД-22";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ЭДМ-22";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ЭДМ-22";>ЭДМ-22</span>
+        <span class="wave-btn__waves"; id="ЭДМ-22";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="БУ-22">
+        <a type="button" href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="БУ-22">БУ-22</span>
+        <span class="wave-btn__waves"; id="БУ-22" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="БУ-22К">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="БУ-22К">БУ-22К</span>
+        <span class="wave-btn__waves"; id="БУ-22К"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ИС-22";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ИС-22";>ИС-22</span>
+        <span class="wave-btn__waves"; id="ИС-22";></span>
+      </a>
+    </div>
+    </div>
+    <!--группы 2 курса-->
+<div id="hidden2" style="display:none;" class="wrapper">
+ <div class="group">выберите группу:</div>
+    <div class="wrapper2"; id="МСА-211";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСА-211";>МСА-211</span>
+        <span class="wave-btn__waves"; id="МСА-211";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ГЭС-221">
+        <a type="button" href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ГЭС-221">ГЭС-221</span>
+        <span class="wave-btn__waves"; id="ГЭС-221" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="КИП-213">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="КИП-213">КИП-213</span>
+        <span class="wave-btn__waves"; id="КИП-213"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="МСД-224";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСД-224";>МСД-224</span>
+        <span class="wave-btn__waves"; id="МСД-224";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ПК-215">
+        <a type="button" href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ПК-215">ПК-215</span>
+        <span class="wave-btn__waves"; id="ПК-215" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="МСТ-216">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСТ-216">МСТ-216</span>
+        <span class="wave-btn__waves"; id="МСТ-216"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="МСП-227";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСП-227";>МСП-227</span>
+        <span class="wave-btn__waves"; id="МСП-227";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ДИ-2">
+      <!-- Контент -->
+      <a  href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ДИ-2">ДИ-2</span>
+        <span class="wave-btn__waves"; id="ДИ-2" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ПГС-2">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ПГС-2">ПГС-2</span>
+        <span class="wave-btn__waves"; id="ПГС-2"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="АД-2";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="АД-2";>АД-2</span>
+        <span class="wave-btn__waves"; id="АД-2";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ЭДМ-2";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ЭДМ-2";; id="ЭДМ-2";>ЭДМ-2</span>
+        <span class="wave-btn__waves"; id="ЭДМ-2";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="БУ-2">
+        <a type="button" href="javascript:get_day('day_of_the_week')" class="wave-btn" >
+        <span class="wave-btn__text"; id="БУ-2">БУ-2</span>
+        <span class="wave-btn__waves"; id="БУ-2" ></span>
+      </a>
+    </div>
+       <div class="wrapper2"; id="ИС-2";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ИС-2";>ИС-2</span>
+        <span class="wave-btn__waves"; id="ИС-2";></span>
+      </a>
+    </div>
+    </div>
+
+
+<div id="hidden3" style="display:none;" class="wrapper">
+ <div class="group">выберите группу:</div>
+    <div class="wrapper2"; id="МСА-311";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСА-311";>МСА-311</span>
+        <span class="wave-btn__waves"; id="МСА-311";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ГЭС-312">
+        <a type="button" href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ГЭС-312">ГЭС-312</span>
+        <span class="wave-btn__waves"; id="ГЭС-312" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="КИП-313">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="КИП-313">КИП-313</span>
+        <span class="wave-btn__waves"; id="КИП-313"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="МСД-314";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСД-314";>МСД-314</span>
+        <span class="wave-btn__waves"; id="МСД-314";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ПК-315">
+        <a type="button" href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ПК-315">ПК-315</span>
+        <span class="wave-btn__waves"; id="ПК-315" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="МСТ-316">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСТ-316">МСТ-316</span>
+        <span class="wave-btn__waves"; id="МСТ-316"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="МСД-324";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСД-324";>МСД-324</span>
+        <span class="wave-btn__waves"; id="МСД-324";></span>
+      </a>
+    </div>
+      <div class="wrapper2"; id="МСА-321";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСА-321";>МСА-321</span>
+        <span class="wave-btn__waves"; id="МСА-321";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ДИ-3">
+      <!-- Контент -->
+      <a  href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ДИ-3">ДИ-3</span>
+        <span class="wave-btn__waves"; id="ДИ-3" ></span>
+      </a>
+    </div>
+      <div class="wrapper2"; id="ДИ-30">
+      <!-- Контент -->
+      <a  href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ДИ-30">ДИ-30</span>
+        <span class="wave-btn__waves"; id="ДИ-30" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ПГС-3">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ПГС-3">ПГС-3</span>
+        <span class="wave-btn__waves"; id="ПГС-3"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="АД-3";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="АД-3";>АД-3</span>
+        <span class="wave-btn__waves"; id="АД-3";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="БУ-30";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="БУ-30";>БУ-30</span>
+        <span class="wave-btn__waves"; id="БУ-30";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="БУ-3">
+        <a type="button" href="javascript:get_day('day_of_the_week')" class="wave-btn" >
+        <span class="wave-btn__text"; id="БУ-3">БУ-3</span>
+        <span class="wave-btn__waves"; id="БУ-3" ></span>
+      </a>
+    </div>
+       <div class="wrapper2"; id="ИС-3";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text" id="ИС-3";>ИС-3</span>
+        <span class="wave-btn__waves" id="ИС-3";></span>
+      </a>
+    </div>
+     <div class="wrapper2"; id="ТОР-3";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ТОР-3";>ТОР-3</span>
+        <span class="wave-btn__waves"; id="ТОР-3";></span>
+      </a>
+    </div>
+    </div>
+
+
+<div id="hidden4" style="display:none;" class="wrapper">
+ <div class="group">выберите группу:</div>
+    <div class="wrapper2"; id="ТОР-4";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ТОР-4";>ТОР-4</span>
+        <span class="wave-btn__waves"; id="ТОР-4";></span>
+      </a>
+    </div>
+        <div class="wrapper2"; id="ЭДМ-4";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ЭДМ-4";>эдм-4</span>
+        <span class="wave-btn__waves"; id="ЭДМ-4";></span>
+      </a>
+    </div>
+        <div class="wrapper2"; id="ПГС-4";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text" ; id="ПГС-4";>пгс-4</span>
+        <span class="wave-btn__waves" ; id="ПГС-4";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="КИП-403">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="КИП-403">КИП-403</span>
+        <span class="wave-btn__waves"; id="КИП-403"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ПК-405">
+        <a type="button" href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ПК-405">ПК-405</span>
+        <span class="wave-btn__waves"; id="ПК-405" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ДИ-4">
+      <!-- Контент -->
+      <a  href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"id="ДИ-40">ДИ-4</span>
+        <span class="wave-btn__waves" id="ДИ-40" ></span>
+      </a>
+    </div>
+      <div class="wrapper2"; id="ДИ-40">
+      <!-- Контент -->
+      <a  href="javascript:get_day('day_of_the_week')" class="wave-btn" id="ДИ-40">
+        <span class="wave-btn__text" id="ДИ-40">ДИ-40</span>
+        <span class="wave-btn__waves" id="ДИ-40" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ПГС-4">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ПГС-4">ПГС-4</span>
+        <span class="wave-btn__waves"; id="ПГС-4"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="АД-4";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="АД-4";>АД-4</span>
+        <span class="wave-btn__waves"; id="АД-4";></span>
+      </a>
+    </div>
+       <div class="wrapper2"; id="ИС-4";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text" id="ИС-4";>ИС-4</span>
+        <span class="wave-btn__waves" id="ИС-4";></span>
+      </a>
+    </div>
+      <div class="wrapper2"; id="ИС-40";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn"; id="ИС-40";>
+        <span class="wave-btn__text" id="ИС-40" >ИС-40</span>
+        <span class="wave-btn__waves" id="ИС-40";></span>
+      </a>
+    </div>
+    </div>
+<div class="empty"></div>
+<div class="day_of_the_week" id="day_of_the_week" style="display:none;" >
+    <div class="choose_day">выберите день недели:</div>
+    <div class="wrapper2"; id="1";>
+      <!-- понедельник -->
+      <a href="javascript:get_rasp()" onclick="javascript:get_arr()" class="wave-btn" id="1";>
+        <span class="wave-btn__text" id="1";>пн</span>
+        <span class="wave-btn__waves" id="1";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="2";>
+      <!-- вторник -->
+      <a href="javascript:get_rasp()" onclick="javascript:get_arr()" class="wave-btn" id="2";>
+        <span class="wave-btn__text" id="2";>вт</span>
+        <span class="wave-btn__waves" id="2";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="3";>
+      <!-- среда -->
+      <a href="javascript:get_rasp()" onclick="javascript:get_arr()" class="wave-btn" id="3";>
+        <span class="wave-btn__text" id="3";>ср</span>
+        <span class="wave-btn__waves" id="3";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="4";>
+      <!-- четверг -->
+      <a href="javascript:get_rasp()"  onclick="javascript:get_arr()" class="wave-btn" id="4";>
+        <span class="wave-btn__text" id="4";>чт</span>
+        <span class="wave-btn__waves" id="4";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="5";>
+      <!-- пятница -->
+      <a href="javascript:get_rasp()" onclick="javascript:get_arr()"  class="wave-btn" id="5";>
+        <span class="wave-btn__text" id="5";>пт</span>
+        <span class="wave-btn__waves" id="5";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="6";>
+      <!-- суббота -->
+      <a href="javascript:get_rasp()" onclick="javascript:get_arr()" class="wave-btn" id="6";>
+        <span class="wave-btn__text" id="6";>сб</span>
+        <span class="wave-btn__waves" id="6";></span>
+      </a>
+    </div>
+    </div>
+    <table id="table"></table>
+    <table class="graph" id="graph">
+      <tr class="date">
+        <td  width= "30" height="30" class="date"></td>
+        <td  width= "30" height="30" class="date">пн</td>
+        <td  width= "30" height="30" class="date">вт</td>
+        <td  width= "30" height="30" class="date">ср</td>
+        <td  width= "30" height="30" class="date">чт</td>
+        <td  width= "30" height="30" class="date">пт</td>
+        <td  width= "30" height="30" class="date">сб</td>
+      </tr>
+      <tr class="time">
+        <td  width= "30" height="30" class="time">8:30</br>9:10</td>
+       <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+      </tr>
+       <tr class="time">
+        <td  width= "30" height="30" class="time">9.15 9.55</td>
+     <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+      </tr>
+       <tr class="time">
+        <td  width= "30" height="30" class="time">10.10 10.50</td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+      </tr>
+       <tr class="time">
+        <td  width= "30" height="30" class="time">11.05 11.45</td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+      </tr>
+       <tr class="time">
+        <td  width= "30" height="30" class="time">12.00 12.40</td>
+       <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+      </tr>
+       <tr class="time">
+        <td  width= "10" height="10" class="time">12.55 13.35</td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+        <td  width= "10" height="10" class="time"></td>
+      </tr>
+       </table>
+<script>
+
+    // body...
+  function showhide(id) {
+        var e = document.getElementById(id);
+        var v = window.glob_id;
+        var table = window.glob_tab;
+        e.style.display = (e.style.display == 'block') ? 'none' : 'block';
+        e.addEventListener('click', function (b){
+        var group = b.target.id;
+      window.glob_var = group;});
+      if (e.style.display == 'none'){
+        v.style.display = 'none';
+        table.innerHTML = '';
+                var t = document.querySelector('#graph');
+ t.style.display = (t.style.display == 'block')? 'none' : 'block';
+      };
+    };
+
+ function get_day(id){
+    var v = document.getElementById(id);
+    window.glob_id = v;
+    v.style.display = (v.style.display == 'block') ? 'none' : 'block';
+    v.addEventListener('click', function (d){
+      var day_week = d.target.id;
+      window.global_var = day_week;
+     });
+    if(v.style.display == 'none'){
+        table.innerHTML = '';
+                var t = document.querySelector('#graph');
+ t.style.display = (t.style.display == 'block')? 'none' : 'block';
+      };
+    };
+    eel.expose(group1);
+    function get_rasp(){
+      var group = window.glob_var;
+      var day_week = window.global_var;
+
+  window.glob_tab = table;
+  
+      eel.group1(group, day_week)(function (arr) {
+let table = document.querySelector('#table');
+table.innerHTML ='';
+ var t = document.querySelector('#graph');
+ t.style.display = (t.style.display == 'block')? 'none' : 'block';
+for (let subArr of arr) {
+  let tr = document.createElement('tr');
+  for (let elem of subArr) {
+    let td = document.createElement('td');
+    td.textContent = elem;
+    tr.appendChild(td);
+  }
+  
+  table.appendChild(tr);
+
+};
+
+  });
+    };
+</script>
+
+</body>
+</html>

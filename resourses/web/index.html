@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>РСК</title>
+   <link rel="icon" href="https://i.postimg.cc/nVKQR9M2/logo-rsk.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&family=Oswald&display=swap" rel="stylesheet">
+<link rel="stylesheet" title="theme" href="/static/theme-light.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+ <header>
+ <ul class="menu">
+  <li>
+    <img class="menu-ico" src="https://i.postimg.cc/DyddXYq2/menu.png" alt="ой, меню нет((">
+    <ul>
+      <li>
+        <a href="auth.html" onclick="logout()">выйти</a>
+      </li>
+    </ul>
+ </ul>
+
+ <div class="logo-holder">
+   <img  class="logo" src="https://i.postimg.cc/nVKQR9M2/logo-rsk.png"  alt="oops, logo isnt work">
+ </div>
+ <h1>Расписание НСК</h1>
+ <div class="theme">
+  <svg class="changeTheme" data-theme="light"  viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M20 30C22.6522 30 25.1957 28.9464 27.0711 27.0711C28.9464 25.1957 30 22.6522 30 20C30 17.3478 28.9464 14.8043 27.0711 12.9289C25.1957 11.0536 22.6522 10 20 10C17.3478 10 14.8043 11.0536 12.9289 12.9289C11.0536 14.8043 10 17.3478 10 20C10 22.6522 11.0536 25.1957 12.9289 27.0711C14.8043 28.9464 17.3478 30 20 30V30ZM20 0C20.3315 0 20.6495 0.131696 20.8839 0.366117C21.1183 0.600537 21.25 0.918479 21.25 1.25V6.25C21.25 6.58152 21.1183 6.89946 20.8839 7.13388C20.6495 7.3683 20.3315 7.5 20 7.5C19.6685 7.5 19.3505 7.3683 19.1161 7.13388C18.8817 6.89946 18.75 6.58152 18.75 6.25V1.25C18.75 0.918479 18.8817 0.600537 19.1161 0.366117C19.3505 0.131696 19.6685 0 20 0V0ZM20 32.5C20.3315 32.5 20.6495 32.6317 20.8839 32.8661C21.1183 33.1005 21.25 33.4185 21.25 33.75V38.75C21.25 39.0815 21.1183 39.3995 20.8839 39.6339C20.6495 39.8683 20.3315 40 20 40C19.6685 40 19.3505 39.8683 19.1161 39.6339C18.8817 39.3995 18.75 39.0815 18.75 38.75V33.75C18.75 33.4185 18.8817 33.1005 19.1161 32.8661C19.3505 32.6317 19.6685 32.5 20 32.5V32.5ZM40 20C40 20.3315 39.8683 20.6495 39.6339 20.8839C39.3995 21.1183 39.0815 21.25 38.75 21.25H33.75C33.4185 21.25 33.1005 21.1183 32.8661 20.8839C32.6317 20.6495 32.5 20.3315 32.5 20C32.5 19.6685 32.6317 19.3505 32.8661 19.1161C33.1005 18.8817 33.4185 18.75 33.75 18.75H38.75C39.0815 18.75 39.3995 18.8817 39.6339 19.1161C39.8683 19.3505 40 19.6685 40 20ZM7.5 20C7.5 20.3315 7.3683 20.6495 7.13388 20.8839C6.89946 21.1183 6.58152 21.25 6.25 21.25H1.25C0.918479 21.25 0.600537 21.1183 0.366117 20.8839C0.131696 20.6495 0 20.3315 0 20C0 19.6685 0.131696 19.3505 0.366117 19.1161C0.600537 18.8817 0.918479 18.75 1.25 18.75H6.25C6.58152 18.75 6.89946 18.8817 7.13388 19.1161C7.3683 19.3505 7.5 19.6685 7.5 20ZM34.1425 5.8575C34.3768 6.09191 34.5085 6.40979 34.5085 6.74125C34.5085 7.07271 34.3768 7.39059 34.1425 7.625L30.6075 11.1625C30.4913 11.2786 30.3533 11.3706 30.2016 11.4333C30.0498 11.4961 29.8871 11.5283 29.7229 11.5282C29.3912 11.528 29.0731 11.396 28.8387 11.1612C28.7227 11.045 28.6307 10.9071 28.5679 10.7553C28.5052 10.6035 28.4729 10.4409 28.4731 10.2766C28.4733 9.94491 28.6053 9.62689 28.84 9.3925L32.375 5.8575C32.6094 5.62316 32.9273 5.49152 33.2588 5.49152C33.5902 5.49152 33.9081 5.62316 34.1425 5.8575V5.8575ZM11.16 28.84C11.3943 29.0744 11.526 29.3923 11.526 29.7237C11.526 30.0552 11.3943 30.3731 11.16 30.6075L7.625 34.1425C7.38925 34.3702 7.07349 34.4962 6.74575 34.4933C6.418 34.4905 6.10449 34.359 5.87273 34.1273C5.64097 33.8955 5.50951 33.582 5.50666 33.2543C5.50381 32.9265 5.6298 32.6108 5.8575 32.375L9.3925 28.84C9.62691 28.6057 9.94479 28.474 10.2762 28.474C10.6077 28.474 10.9256 28.6057 11.16 28.84V28.84ZM34.1425 34.1425C33.9081 34.3768 33.5902 34.5085 33.2588 34.5085C32.9273 34.5085 32.6094 34.3768 32.375 34.1425L28.84 30.6075C28.6123 30.3717 28.4863 30.056 28.4892 29.7282C28.492 29.4005 28.6235 29.087 28.8552 28.8552C29.087 28.6235 29.4005 28.492 29.7282 28.4892C30.056 28.4863 30.3717 28.6123 30.6075 28.84L34.1425 32.375C34.3768 32.6094 34.5085 32.9273 34.5085 33.2588C34.5085 33.5902 34.3768 33.9081 34.1425 34.1425ZM11.16 11.1625C10.9256 11.3968 10.6077 11.5285 10.2762 11.5285C9.94479 11.5285 9.62691 11.3968 9.3925 11.1625L5.8575 7.625C5.73811 7.50969 5.64288 7.37176 5.57737 7.21926C5.51186 7.06675 5.47738 6.90273 5.47594 6.73675C5.47449 6.57078 5.50612 6.40618 5.56897 6.25256C5.63182 6.09894 5.72464 5.95937 5.84201 5.84201C5.95937 5.72464 6.09894 5.63182 6.25256 5.56897C6.40618 5.50612 6.57078 5.47449 6.73675 5.47594C6.90273 5.47738 7.06675 5.51186 7.21926 5.57737C7.37176 5.64288 7.50969 5.73811 7.625 5.8575L11.16 9.3925C11.2764 9.50861 11.3688 9.64655 11.4318 9.79842C11.4948 9.95028 11.5272 10.1131 11.5272 10.2775C11.5272 10.4419 11.4948 10.6047 11.4318 10.7566C11.3688 10.9084 11.2764 11.0464 11.16 11.1625V11.1625Z" fill="#ffffff"></path>
+  </svg>
+    <svg class="changeTheme" data-theme="dark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M15 0.695136C15.244 0.991667 15.3935 1.35457 15.4292 1.73694C15.4648 2.11932 15.385 2.5036 15.2 2.84014C13.7546 5.49382 12.9998 8.46837 13.005 11.4901C13.005 21.5426 21.2 29.6826 31.3 29.6826C32.6175 29.6826 33.9 29.5451 35.1325 29.2826C35.5103 29.2008 35.9039 29.2321 36.264 29.3726C36.6241 29.5131 36.9349 29.7566 37.1575 30.0726C37.3925 30.4013 37.5123 30.7983 37.4983 31.2021C37.4842 31.6058 37.3372 31.9936 37.08 32.3051C35.1192 34.7137 32.6456 36.6544 29.8396 37.9856C27.0335 39.3168 23.9658 40.0051 20.86 40.0001C9.335 40.0001 0 30.7151 0 19.2751C0 10.6651 5.285 3.28014 12.81 0.150136C13.1848 -0.00828447 13.601 -0.0407995 13.9959 0.057475C14.3908 0.15575 14.7431 0.379507 15 0.695136V0.695136Z" fill="#222222"></path>
+    </svg>
+ </div>
+ </header>
+
+ 
+  <div class="choose_curse">
+  <div class="curse">выберите курс:</div>
+  <!--- выбор курса---->
+    <div  class="wrapper2"; id="curse 1";>
+      <!-- при нажатии появляется\прячится группы 1 курса по id hidden1  -->
+      <a href="javascript:showhide('hidden1')" class="wave-btn" id="1_curse">
+        <span class="wave-btn__text">1</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="curse 2";>
+      <!-- при нажатии появляется\прячится группы 2 курса по id hidden1 -->
+      <a href="javascript:showhide('hidden2')" class="wave-btn">
+        <span class="wave-btn__text">2</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="curse 3";>
+      <!-- при нажатии появляется\прячится группы 3 курса по id hidden1 -->
+      <a href="javascript:showhide('hidden3')" class="wave-btn">
+        <span class="wave-btn__text">3</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="curse 4";>
+      <!-- при нажатии появляется\прячится группы 4 курса по id hidden1 -->
+      <a href="javascript:showhide('hidden4')" class="wave-btn">
+        <span class="wave-btn__text">4</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div>
+    </div>
+    <!--группы 1 курса-->
+    <div id="hidden1" style="display:none;" class="wrapper">
+ <div class="group">выберите группу:</div>
+ 
+ <div class="wrapper2"; id="МСТ-23">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСТ-23">МСТ-23</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div> 
+ <div class="wrapper2"; id="МСТ-23">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСТ-23">МСД-23а</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div> 
+ <div class="wrapper2"; id="МСТ-23">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn"; id="МСТ-23">
+        <span class="wave-btn__text"; id="МСТ-23">МСД-23б</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div> 
+ <div class="wrapper2"; >
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text">ГЭС-23</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div> 
+ <div class="wrapper2"; >
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text">МСА-23</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div> 
+ <div class="wrapper2"; >
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text">КИП-23</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div> 
+ <div class="wrapper2"; >
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text">ПК-23</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div> 
+ <div class="wrapper2"; >
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text">МСТ-23к</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div> 
+ <div class="wrapper2"; >
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text">ГЭС-23к</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div> 
+ <div class="wrapper2"; >
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text">ПЛ-106</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div> 
+ <div class="wrapper2"; >
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text">ПВ-107</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div> 
+ <div class="wrapper2"; >
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text">ПГС-23</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div> 
+ <div class="wrapper2"; >
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text">ИС-23</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div> 
+ <div class="wrapper2"; >
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text">БУ-23</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div> 
+ <div class="wrapper2"; >
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text">ДИ-23</span>
+        <span class="wave-btn__waves"></span>
+      </a>
+    </div>
+
+
+    </div>
+    </div>
+  <!--группы 2 курса-->  
+ <div id="hidden2" style="display:none;" class="wrapper">
+ <div class="group">выберите группу:</div>
+ 
+    <div class="wrapper2"; id="МСА-22";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn" id="МСА-22";>
+        <span class="wave-btn__text" id="МСА-22";>МСА-22</span>
+        <span class="wave-btn__waves" id="МСА-22";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ГЭС-22">
+        <a type="button" href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ГЭС-22">ГЭС-22</span>
+        <span class="wave-btn__waves"; id="ГЭС-22" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="КИП-22">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="КИП-22">КИП-22</span>
+        <span class="wave-btn__waves"; id="КИП-22"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="МСД-22";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСД-22";>МСД-22</span>
+        <span class="wave-btn__waves"; id="МСД-22";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="МСД-22-К";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСД-22-К";>МСД-22-К</span>
+        <span class="wave-btn__waves"; id="МСД-22-К";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ПК-22">
+        <a type="button" href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ПК-22">ПК-22</span>
+        <span class="wave-btn__waves"; id="ПК-22" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="МСТ-22">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСТ-22">МСТ-22</span>
+        <span class="wave-btn__waves"; id="МСТ-22"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ОП-106";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ОП-106";>ОП-106</span>
+        <span class="wave-btn__waves"; id="ОП-106";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ПВ-107";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ПВ-107";>ПВ-107</span>
+        <span class="wave-btn__waves"; id="ПВ-107";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ДИ-22">
+      <!-- Контент -->
+      <a  href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ДИ-22">ДИ-22</span>
+        <span class="wave-btn__waves"; id="ДИ-22" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ПГС-22">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ПГС-22">ПГС-22</span>
+        <span class="wave-btn__waves"; id="ПГС-22"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="АД-22";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="АД-22";>АД-22</span>
+        <span class="wave-btn__waves"; id="АД-22";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ЭДМ-22";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ЭДМ-22";>ЭДМ-22</span>
+        <span class="wave-btn__waves"; id="ЭДМ-22";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="БУ-22">
+        <a type="button" href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="БУ-22">БУ-22</span>
+        <span class="wave-btn__waves"; id="БУ-22" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="БУ-22К">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="БУ-22К">БУ-22К</span>
+        <span class="wave-btn__waves"; id="БУ-22К"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ИС-22";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ИС-22";>ИС-22</span>
+        <span class="wave-btn__waves"; id="ИС-22";></span>
+      </a>
+    </div>
+  </div>
+
+   
+ <div id="hidden3" style="display:none;" class="wrapper">
+    <div class="group">выберите группу:</div>
+    <div class="wrapper2"; id="МСА-311";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСА-311";>МСА-311</span>
+        <span class="wave-btn__waves"; id="МСА-311";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ГЭС-312">
+        <a type="button" href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ГЭС-312">ГЭС-312</span>
+        <span class="wave-btn__waves"; id="ГЭС-312" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="КИП-313">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="КИП-313">КИП-313</span>
+        <span class="wave-btn__waves"; id="КИП-313"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="МСД-314";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСД-314";>МСД-314</span>
+        <span class="wave-btn__waves"; id="МСД-314";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ПК-315">
+        <a type="button" href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ПК-315">ПК-315</span>
+        <span class="wave-btn__waves"; id="ПК-315" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="МСТ-316">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСТ-316">МСТ-316</span>
+        <span class="wave-btn__waves"; id="МСТ-316"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="МСД-324";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСД-324";>МСД-324</span>
+        <span class="wave-btn__waves"; id="МСД-324";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="МСА-321";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="МСА-321";>МСА-321</span>
+        <span class="wave-btn__waves"; id="МСА-321";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ДИ-3">
+      <!-- Контент -->
+      <a  href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ДИ-3">ДИ-3</span>
+        <span class="wave-btn__waves"; id="ДИ-3" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ДИ-30">
+      <!-- Контент -->
+      <a  href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ДИ-30">ДИ-30</span>
+        <span class="wave-btn__waves"; id="ДИ-30" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ПГС-3">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ПГС-3">ПГС-3</span>
+        <span class="wave-btn__waves"; id="ПГС-3"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="АД-3";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="АД-3";>АД-3</span>
+        <span class="wave-btn__waves"; id="АД-3";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="БУ-30";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="БУ-30";>БУ-30</span>
+        <span class="wave-btn__waves"; id="БУ-30";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="БУ-3">
+        <a type="button" href="javascript:get_day('day_of_the_week')" class="wave-btn" >
+        <span class="wave-btn__text"; id="БУ-3">БУ-3</span>
+        <span class="wave-btn__waves"; id="БУ-3" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ИС-3";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text" id="ИС-3";>ИС-3</span>
+        <span class="wave-btn__waves" id="ИС-3";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ТОР-3";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ТОР-3";>ТОР-3</span>
+        <span class="wave-btn__waves"; id="ТОР-3";></span>
+      </a>
+    </div>
+ </div>
+
+
+  <div id="hidden4" style="display:none;" class="wrapper">
+   <div class="group">выберите группу:</div>
+    <div class="wrapper2"; id="ТОР-4";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ТОР-4";>ТОР-4</span>
+        <span class="wave-btn__waves"; id="ТОР-4";></span>
+      </a>
+    </div>
+        <div class="wrapper2"; id="ЭДМ-4";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ЭДМ-4";>эдм-4</span>
+        <span class="wave-btn__waves"; id="ЭДМ-4";></span>
+      </a>
+    </div>
+        <div class="wrapper2"; id="ПГС-4";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text" ; id="ПГС-4";>пгс-4</span>
+        <span class="wave-btn__waves" ; id="ПГС-4";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="КИП-403">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="КИП-403">КИП-403</span>
+        <span class="wave-btn__waves"; id="КИП-403"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ПК-405">
+        <a type="button" href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ПК-405">ПК-405</span>
+        <span class="wave-btn__waves"; id="ПК-405" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ДИ-4">
+      <!-- Контент -->
+      <a  href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"id="ДИ-40">ДИ-4</span>
+        <span class="wave-btn__waves" id="ДИ-40" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ДИ-40">
+      <!-- Контент -->
+      <a  href="javascript:get_day('day_of_the_week')" class="wave-btn" id="ДИ-40">
+        <span class="wave-btn__text" id="ДИ-40">ДИ-40</span>
+        <span class="wave-btn__waves" id="ДИ-40" ></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ПГС-4">
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="ПГС-4">ПГС-4</span>
+        <span class="wave-btn__waves"; id="ПГС-4"></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="АД-4";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text"; id="АД-4";>АД-4</span>
+        <span class="wave-btn__waves"; id="АД-4";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ИС-4";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn">
+        <span class="wave-btn__text" id="ИС-4";>ИС-4</span>
+        <span class="wave-btn__waves" id="ИС-4";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="ИС-40";>
+      <!-- Контент -->
+      <a href="javascript:get_day('day_of_the_week')" class="wave-btn"; id="ИС-40";>
+        <span class="wave-btn__text" id="ИС-40" >ИС-40</span>
+        <span class="wave-btn__waves" id="ИС-40";></span>
+      </a>
+    </div>
+  </div>
+ <div class="day_of_the_week" id="day_of_the_week" style="display:none;" >
+    <div class="choose_day">выберите день недели:</div>
+    <div class="wrapper2"; id="1";>
+      <!-- понедельник -->
+      <a href="javascript:get_rasp()"  class="wave-btn" id="1";>
+        <span class="wave-btn__text" id="1";>пн</span>
+        <span class="wave-btn__waves" id="1";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="2";>
+      <!-- вторник -->
+      <a href="javascript:get_rasp()"  class="wave-btn" id="2";>
+        <span class="wave-btn__text" id="2";>вт</span>
+        <span class="wave-btn__waves" id="2";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="3";>
+      <!-- среда -->
+      <a href="javascript:get_rasp()"  class="wave-btn" id="3";>
+        <span class="wave-btn__text" id="3";>ср</span>
+        <span class="wave-btn__waves" id="3";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="4";>
+      <!-- четверг -->
+      <a href="javascript:get_rasp()"   class="wave-btn" id="4";>
+        <span class="wave-btn__text" id="4";>чт</span>
+        <span class="wave-btn__waves" id="4";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="5";>
+      <!-- пятница -->
+      <a href="javascript:get_rasp()"  class="wave-btn" id="5";>
+        <span class="wave-btn__text" id="5";>пт</span>
+        <span class="wave-btn__waves" id="5";></span>
+      </a>
+    </div>
+    <div class="wrapper2"; id="6";>
+      <!-- суббота -->
+      <a href="javascript:get_rasp()"  class="wave-btn" id="6";>
+        <span class="wave-btn__text" id="6";>сб</span>
+        <span class="wave-btn__waves" id="6";></span>
+      </a>
+    </div>
+    </div>
+    <table id="table"></table>
+    <div class="graph"></div>
+<script>
+let changeThemeButtons = document.querySelectorAll('.changeTheme');
+
+changeThemeButtons.forEach(button => {
+    button.addEventListener('click', function () {
+        let theme = this.dataset.theme;
+        applyTheme(theme);
+    });
+});
+
+function applyTheme(themeName) {
+    document.querySelector('[title="theme"]').setAttribute('href', `/static/theme-${themeName}.css`);
+    changeThemeButtons.forEach(button => {
+        button.style.display = 'block';
+    });
+    document.querySelector(`[data-theme="${themeName}"]`).style.display = 'none';
+    localStorage.setItem('theme', themeName);
+}
+
+let activeTheme = localStorage.getItem('theme');
+if (activeTheme === null || activeTheme === 'light') {
+    applyTheme('light');
+} else if (activeTheme === 'dark') {
+    applyTheme('dark');
+}
+
+    // body...
+    let currentVisible = null; // Переменная для хранения ID текущего видимого элемента
+
+function showhide(id) {
+    const e = document.getElementById(id); // Получаем элемент по ID
+
+    // Если есть ранее открытый элемент и он не совпадает с текущим, скрываем его
+    if (currentVisible && currentVisible !== id) {
+        const previous = document.getElementById(currentVisible);
+        if (previous) {
+            previous.style.display = 'none'; // Скрываем предыдущий элемент
+        }if (table) {
+            table.innerHTML = ''; // Очищаем таблицу
+        }
+    }
+
+    // Переключаем отображение текущего элемента
+    if (e.style.display === 'block') {
+        e.style.display = 'none';
+        currentVisible = null; // Сбрасываем, если скрыли текущий элемент
+    } else {
+        e.style.display = 'block';
+        currentVisible = id; // Обновляем текущий видимый элемент
+    }
+
+    // Добавляем обработчик для получения значения группы
+    e.addEventListener('click', function (b) {
+        const group = b.target.id; // Получаем ID группы
+        window.glob_var = group; // Сохраняем значение в глобальную переменную
+    });
+}
+
+
+function get_day(id) {
+    var v = document.getElementById(id);
+
+    v.style.display = (v.style.display === 'none') ? 'block' : 'block';
+
+    if (!v.hasEventListener) {
+        v.addEventListener('click', function (d) {
+            var day_week = d.target.id; // Получаем ID дня недели
+            alert(`Выбран день: ${day_week}`);
+            window.global_var = day_week; // Устанавливаем глобальную переменную
+        });
+        v.hasEventListener = true;
+    }if (table) {
+            table.innerHTML = ''; // Очищаем таблицу
+        }
+}
+
+async function get_rasp() {
+    try {
+        // Получаем значения из глобальных переменных
+        const group = window.glob_var;
+        const day_week = window.global_var;
+
+        // Проверка наличия значений
+        if (!group || !day_week) {
+            alert('Группа или день недели не выбраны!');
+            return;
+        }
+
+        alert(`Отправка запроса: группа = ${group}, день = ${day_week}`);
+        const response = await fetch(`/group1/?group=${group}&day_week=${day_week}`);
+        const result = await response.json();
+
+        // Проверка структуры ответа
+        if (result && result.data && Array.isArray(result.data)) {
+            let table = document.querySelector('#table');
+            table.innerHTML = ''; // Очищаем таблицу перед заполнением
+
+            // Создание строк таблицы из данных
+            result.data.forEach(row => {
+                let tr = document.createElement('tr');
+                row.forEach(cell => {
+                    let td = document.createElement('td');
+                    td.textContent = cell;
+                    tr.appendChild(td);
+                });
+                table.appendChild(tr);
+            });
+        } else {
+            throw new Error('Неверный формат данных');
+        }
+    } catch (error) {
+        console.error('Ошибка при загрузке данных:', error);
+    }
+}
+    function logout() {
+      window.location.href = "auth.html";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бургер-меню</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #000;
+        }
+.navbar {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 20px;
+      background-color: #FB0E03;
+      color: white;
+    }
+        .burger-menu {
+            width: 30px;
+            height: 24px;
+            display: block;
+            cursor: pointer;
+            position: relative;
+        }
+        .burger-menu span {
+            display: block;
+            width: 100%;
+            height: 4px;
+            background: white;
+            position: absolute;
+            transition: all 0.3s;
+        }
+        .burger-menu span:nth-child(1) { top: 4px; }
+        .burger-menu span:nth-child(2) { top: 10px; }
+        .burger-menu span:nth-child(3) { top: 17px; }
+        .burger-menu.active span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 10px;
+        }
+        .burger-menu.active span:nth-child(2) {
+            transform: rotate(-45deg);
+            top: 10px;
+        }
+        .burger-menu.active span:nth-child(3) {
+           display: none;
+        }
+        .menu {
+            display: none;
+            position: absolute;
+            top: 5dvh;
+            left: 0;
+            background: red;
+            width: 8dvw;
+            padding: 10px;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5);
+        }
+        .menu.active { display: block; }
+        .menu a, .menu button {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            text-align: left;
+        }
+            .submenu {
+            display: none;
+            position: absolute;
+            left: 9dvw;
+            top: 12dvh;
+            background: red;
+            width: 10dvw;
+            padding: 10px;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            }
+            .submenu button{
+                color: white;
+                text-decoration: none;
+                display: block;
+                padding: 10px;
+                cursor: pointer;
+                background: none;
+                border: none;
+                text-align: left;
+            }
+            .submenu.active { display: block; }
+        .calendar {
+      display: flex;
+      gap: 10px;
+    }
+
+    .schedule {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+
+    .schedule th, .schedule td {
+      border: 1px solid #FB0E03;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .schedule th {
+      background-color: #FB0E03;
+      color: white;
+    }
+        .day-selector {
+            display: none;
+            position: absolute;
+            background: red;
+            color: white;
+            padding: 10px;
+            top: 40px;
+            left: 50px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .day-selector.active { display: block; }
+        .group-selector {
+            display: none;
+            position: absolute;
+            left: 210px;
+            top: 90px;
+            background: red;
+            width: 180px;
+            padding: 10px;
+        }
+        .group-selector.active { display: block; }
+        .group-search {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        .icon{
+            margin: 0px 8px -10px 0px;
+            max-width: 26px;
+        }
+        .icon-calendar{
+            max-width: 26px;  
+        }
+        .icon-enter{
+            margin: 0px 6px 0px 0px;
+            max-width: 12px;
+        }
+        .logo-holder{
+	margin: 0% 0% 0% 18%;
+	display: flex;
+	
+}
+.logo { width: 41px;
+}
+h1{margin:0.6% 0% 0% 3%; color: #FFF; display: flex; display: flex;}
+
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="burger-menu" id="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="logo-holder">
+            <img  class="logo" src="https://i.postimg.cc/mgpvCCFd/rsklogo.png"  alt="oops, logo isnt work">
+          </div>
+          <h1>Расписание НСК</h1>
+        <div class="calendar">
+            <sub id="selected-day">Пн</sub>
+            <span class="calendar-icon" id="calendar-icon"><img src="https://i.postimg.cc/1txSQNG0/calendar-1.png" alt="📅" class="icon-calendar"></span>
+        </div>
+    </header>
+    <div class="day-selector" id="day-selector">
+        <button class="day" data-day="Пн">Пн</button>
+        <button class="day" data-day="Вт">Вт</button>
+        <button class="day" data-day="Ср">Ср</button>
+        <button class="day" data-day="Чт">Чт</button>
+        <button class="day" data-day="Пт">Пт</button>
+        <button class="day" data-day="Сб">Сб</button>
+    </div>
+    
+    <nav class="menu" id="menu">
+        <a href="#"><img src="https://i.postimg.cc/0jCtT5h8/enter.png" alt="" class="icon-enter">Войти</a>
+        <button id="settings">⚙ Настройки</button>
+    </nav>
+    <div class="submenu" id="submenu">
+        <button class="theme-toggle" id="themeToggle"><img  src="https://i.postimg.cc/mZz0Pb45/dark-mode.png" alt="" class="icon">Смена темы</button>
+        <button id="group-settings"><img src="https://i.postimg.cc/BvxwTCNL/people.png" alt="👤" class="icon"> Выбор группы</button>
+    </div>
+    <div class="group-selector" id="group-selector">
+        <input type="text" class="group-search" id="group-search" placeholder="Поиск...">
+        <button class="group" data-group="ИС-4">ИС-4</button>
+        <button class="group" data-group="ИС-23">ИС-23</button>
+        <button class="group" data-group="ИС-22">ИС-22</button>
+        <button class="group" data-group="ИС-24">ИС-24</button>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const burger = document.getElementById("burger");
+            const menu = document.getElementById("menu");
+            const settings = document.getElementById("settings");
+            const submenu = document.getElementById("submenu");
+            const themeToggle = document.getElementById("themeToggle");
+            const calendarIcon = document.getElementById("calendar-icon");
+            const daySelector = document.getElementById("day-selector");
+            const selectedDay = document.getElementById("selected-day");
+            const groupSettings = document.getElementById("group-settings");
+            const groupSelector = document.getElementById("group-selector");
+            const dayButtons = document.querySelectorAll(".day");
+            const groupButtons = document.querySelectorAll(".group");
+            
+            burger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                menu.classList.toggle("active");
+                burger.classList.toggle("active");
+            });
+            settings.addEventListener("click", (e) => {
+                e.stopPropagation();
+                submenu.classList.toggle("active");
+            });
+            themeToggle.addEventListener("click", () => {
+                document.body.classList.toggle("dark-theme");
+                document.body.style.backgroundColor = document.body.classList.contains("dark-theme") ? "#000" : "#fff";
+                document.body.style.color = document.body.classList.contains("dark-theme") ? "#fff" : "#000";
+            });
+            calendarIcon.addEventListener("click", () => {
+                daySelector.classList.toggle("active");
+            });
+            dayButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    selectedDay.textContent = button.getAttribute("data-day");
+                    daySelector.classList.remove("active");
+                });
+            });
+            groupSettings.addEventListener("click", () => {
+                groupSelector.classList.toggle("active");
+            });
+        });
+    </script>
+</body>
+</html>

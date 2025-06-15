@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" title="auth.css" href="auth.css">
+</head>
+<body>
+    <!-- Затемнение фона -->
+    <div class="overlay" style="background: url('https://i.postimg.cc/L6st73YX/artistic-blurry-colorful-wallpaper-background-1.jpg') no-repeat center center fixed; background-size: cover;"></div>
+
+    <!-- Окно авторизации/регистрации -->
+    <div class="login-bg">
+        <div class="d-inline-block auth-logo">
+            <img src="https://i.postimg.cc/mgpvCCFd/rsklogo.png" alt="Логотип" height="80" />
+        </div>
+        <div class="auth-form">
+            <div class="mb-3">
+                <label for="username" class="form-label">Имя пользователя</label>
+                <input name="txtusername" type="text" id="txtusername" class="form-control" placeholder="Введите имя пользователя" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="password-input">Пароль</label>
+                <input name="txtpassword" type="password" id="txtpassword" class="form-control pe-5 password-input" placeholder="Введите пароль" />
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="auth-remember-check" />
+                <label class="form-check-label" for="auth-remember-check">Запомнить меня</label>
+                <a href="#" class="text-muted float-end forgot-password">Забыли пароль?</a>
+            </div>
+            <div class="mt-4">
+                <input type="submit" name="btnlogin" value="Войти" id="btnlogin" class="btn btn-primary w-100" />
+            </div>
+            <div class="mt-3 text-center">
+                <button id="registerButton" class="btn btn-secondary w-100">Зарегистрироваться</button>
+            </div>
+            <div class="or-text">или войдите как:</div>
+            <button id="guestLogin" class="guest-button">Гость</button>
+        </div>
+
+        <!-- Элементы регистрации -->
+        <div class="register-form hidden">
+            <h3 class="text-dark">Регистрация</h3>
+            <div class="p-2 mt-3">
+                <div class="mb-3">
+                    <label for="login" class="form-label">Логин</label>
+                    <input name="login" type="text" id="login" class="form-control" placeholder="Введите логин" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="password-input">Пароль</label>
+                    <input name="password" type="password" id="password" class="form-control pe-5 password-input" placeholder="Введите пароль" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="group-select">Выберите группу</label>
+                    <select id="group-select" class="form-control">
+                        <option value="IS-4">ИС-4</option>
+                        <option value="IS-22">ИС-22</option>
+                        <option value="IS-23">ИС-23</option>
+                    </select>
+                </div>
+                <div class="mt-4">
+                    <input type="submit" name="btnregister" value="Зарегистрироваться" id="btnregister" class="btn btn-primary w-100" />
+                </div>
+                <div class="mt-3 text-center">
+                    <button id="backToLoginButton" class="btn btn-secondary w-100">Назад к входу</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>document.addEventListener('DOMContentLoaded', () => {
+        const loginBg = document.querySelector('.login-bg');
+        const authForm = document.querySelector('.auth-form');
+        const registerForm = document.querySelector('.register-form');
+        const registerButton = document.getElementById('registerButton');
+        const backToLoginButton = document.getElementById('backToLoginButton');
+    
+        // Функция для перехода к регистрации
+        function showRegister() {
+            loginBg.classList.add('expanded'); // Расширяем окно
+            setTimeout(() => {
+                authForm.classList.add('hidden'); // Скрываем форму авторизации
+                registerForm.classList.remove('hidden'); // Показываем форму регистрации
+            }, 300); // Ждем завершения анимации
+        }
+    
+        // Функция для возврата к авторизации
+        function showLogin() {
+            loginBg.classList.remove('expanded'); // Сужаем окно
+            setTimeout(() => {
+                registerForm.classList.add('hidden'); // Скрываем форму регистрации
+                authForm.classList.remove('hidden'); // Показываем форму авторизации
+            }, 300); // Ждем завершения анимации
+        }
+    
+        // Кнопка "Зарегистрироваться"
+        registerButton.addEventListener('click', showRegister);
+    
+        // Кнопка "Назад к входу"
+        backToLoginButton.addEventListener('click', showLogin);
+    
+        // Вход как гость
+        const guestLogin = document.getElementById('guestLogin');
+        guestLogin.addEventListener('click', () => {
+            alert('Вы вошли как гость');
+        });
+    
+        // Обработка кнопки "Войти" (пример)
+        const btnLogin = document.getElementById('btnlogin');
+        btnLogin.addEventListener('click', () => {
+            const username = document.getElementById('txtusername').value;
+            const password = document.getElementById('txtpassword').value;
+    
+            if (!username || !password) {
+                alert('Пожалуйста, заполните все поля.');
+                return;
+            }
+    
+            alert(`Добро пожаловать, ${username}!`);
+        });
+    
+        // Обработка кнопки "Зарегистрироваться" (пример)
+        const btnRegister = document.getElementById('btnregister');
+        btnRegister.addEventListener('click', () => {
+            const login = document.getElementById('login').value;
+            const password = document.getElementById('password').value;
+            const group = document.getElementById('group-select').value;
+    
+            if (!login || !password) {
+                alert('Пожалуйста, заполните все поля.');
+                return;
+            }
+    
+            alert(`Вы успешно зарегистрировались!\nЛогин: ${login}\nГруппа: ${group}`);
+        });
+    });</script>
+</body>
+</html>

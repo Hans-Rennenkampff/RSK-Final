@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+    <div class="overlay" style="background: url('https://i.postimg.cc/L6st73YX/artistic-blurry-colorful-wallpaper-background-1.jpg') no-repeat center center fixed; background-size: cover;"></div>
+
+    <div class="login-bg">
+        <div class="d-inline-block auth-logo">
+            <img src="https://i.postimg.cc/mgpvCCFd/rsklogo.png" alt="Логотип" height="80" />
+        </div>
+
+        <!-- Авторизация -->
+        <div class="auth-form">
+            <div class="mb-3">
+                <label for="txtusername" class="form-label">Имя пользователя</label>
+                <input name="txtusername" type="text" id="txtusername" class="form-control" placeholder="Введите имя пользователя" />
+            </div>
+            <div class="mb-3">
+                <label for="txtpassword" class="form-label">Пароль</label>
+                <input name="txtpassword" type="password" id="txtpassword" class="form-control password-input" placeholder="Введите пароль" />
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="auth-remember-check" />
+                <label class="form-check-label" for="auth-remember-check">Запомнить меня</label>
+                <a href="#" class="text-muted float-end forgot-password">Забыли пароль?</a>
+            </div>
+            <div class="mt-4">
+                <button id="btnlogin" class="btn btn-primary w-100">Войти</button>
+            </div>
+            <div class="mt-3 text-center">
+                <button id="registerButton" class="btn btn-secondary w-100">Зарегистрироваться</button>
+            </div>
+            <div class="or-text">или войдите как:</div>
+            <button id="guestLogin" class="guest-button">Гость</button>
+        </div>
+
+        <!-- Регистрация -->
+        <div class="register-form hidden">
+            <h3 class="text-dark">Регистрация</h3>
+            <div class="p-2 mt-3">
+                <div class="mb-3">
+                    <label for="login" class="form-label">Логин</label>
+                    <input name="login" type="text" id="login" class="form-control" placeholder="Введите логин" />
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Пароль</label>
+                    <input name="password" type="password" id="password" class="form-control password-input" placeholder="Введите пароль" />
+                </div>
+                <div class="mb-3">
+                    <label for="group-select" class="form-label">Выберите группу</label>
+                        <select id="group-select" class="form-control">
+                                <option value="АД-22">АД-22</option>
+                                <option value="АД-4">АД-4</option>
+                                <option value="БУ-22">БУ-22</option>
+                                <option value="БУ-22К">БУ-22К</option>
+                                <option value="БУ-23">БУ-23</option>
+                                <option value="БУ-24">БУ-24</option>
+                                <option value="ГЭС-22">ГЭС-22</option>
+                                <option value="ГЭС-23">ГЭС-23</option>
+                                <option value="ГЭС-23к">ГЭС-23к</option>
+                                <option value="ГЭС-24">ГЭС-24</option>
+                                <option value="ГЭС-24к">ГЭС-24к</option>
+                                <option value="ДИ-22">ДИ-22</option>
+                                <option value="ДИ-23">ДИ-23</option>
+                                <option value="ДИ-24">ДИ-24</option>
+                                <option value="ДИ-4">ДИ-4</option>
+                                <option value="ИС-22">ИС-22</option>
+                                <option value="ИС-23">ИС-23</option>
+                                <option value="ИС-24">ИС-24</option>
+                                <option value="ИС-4">ИС-4</option>
+                                <option value="КИП-22">КИП-22</option>
+                                <option value="КИП-23">КИП-23</option>
+                                <option value="КИП-24">КИП-24</option>
+                                <option value="КИП-24к">КИП-24к</option>
+                                <option value="КИП-413">КИП-413</option>
+                                <option value="МСА-22">МСА-22</option>
+                                <option value="МСА-23">МСА-23</option>
+                                <option value="МСА-24">МСА-24</option>
+                                <option value="МСД-22">МСД-22</option>
+                                <option value="МСД-22-К">МСД-22-К</option>
+                                <option value="МСД-23а">МСД-23а</option>
+                                <option value="МСД-23б">МСД-23б</option>
+                                <option value="МСД-24">МСД-24</option>
+                                <option value="МСТ-22">МСТ-22</option>
+                                <option value="МСТ-23">МСТ-23</option>
+                                <option value="МСТ-23к">МСТ-23к</option>
+                                <option value="МСТ-24">МСТ-24</option>
+                                <option value="ОП-106">ОП-106</option>
+                                <option value="ПВ-107">ПВ-107</option>
+                                <option value="ПГС-22">ПГС-22</option>
+                                <option value="ПГС-23">ПГС-23</option>
+                                <option value="ПГС-24а">ПГС-24а</option>
+                                <option value="ПГС-24б">ПГС-24б</option>
+                                <option value="ПГС-4">ПГС-4</option>
+                                <option value="ПК-22">ПК-22</option>
+                                <option value="ПК-23">ПК-23</option>
+                                <option value="ПК-24">ПК-24</option>
+                                <option value="ПК-415">ПК-415</option>
+                                <option value="ЭДМ-22">ЭДМ-22</option>
+                                <option value="ЭДМ-23">ЭДМ-23</option>
+                                <option value="ЭДМ-24">ЭДМ-24</option>
+                                <option value="ЭДМ-4">ЭДМ-4</option>
+                        </select>
+                </div>
+                <div class="mt-4">
+                    <button id="btnregister" class="btn btn-primary w-100">Зарегистрироваться</button>
+                </div>
+                <div class="mt-3 text-center">
+                    <button id="backToLoginButton" class="btn btn-secondary w-100">Назад к входу</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const loginBg = document.querySelector('.login-bg');
+    const authForm = document.querySelector('.auth-form');
+    const registerForm = document.querySelector('.register-form');
+    const registerButton = document.getElementById('registerButton');
+    const backToLoginButton = document.getElementById('backToLoginButton');
+    const usernameField = document.getElementById('txtusername');
+    const passwordField = document.getElementById('txtpassword');
+
+    // Загрузка сохранённых данных
+    const savedUsername = localStorage.getItem('username');
+    const savedPassword = localStorage.getItem('password');
+    const savedToken = localStorage.getItem('token');
+
+    // Автоматическая авторизация
+    if (savedToken) {
+        window.location.href = "authorized.html";
+    }
+
+    // Автозаполнение логина и пароля
+    if (savedUsername) usernameField.value = savedUsername;
+    if (savedPassword) passwordField.value = savedPassword;
+
+    // Переход в форму регистрации
+    registerButton.addEventListener('click', () => {
+        loginBg.classList.add('expanded');
+        setTimeout(() => {
+            authForm.classList.add('hidden');
+            registerForm.classList.remove('hidden');
+        }, 300);
+    });
+
+    // Переход обратно к авторизации
+    backToLoginButton.addEventListener('click', () => {
+        loginBg.classList.remove('expanded');
+        setTimeout(() => {
+            registerForm.classList.add('hidden');
+            authForm.classList.remove('hidden');
+        }, 300);
+    });
+
+    // Вход как гость
+    document.getElementById('guestLogin').addEventListener('click', () => {
+        window.location.href = "index.html";
+    });
+
+    // Авторизация
+    document.getElementById('btnlogin').addEventListener('click', async () => {
+        const username = usernameField.value;
+        const password = passwordField.value;
+
+        const formData = new URLSearchParams();
+        formData.append('username', username);
+        formData.append('password', password);
+
+        try {
+            const res = await fetch('http://localhost:8000/login', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: formData
+            });
+
+            const data = await res.json();
+            if (res.ok) {
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('username', username);
+                localStorage.setItem('password', password);
+                window.location.href = "authorized.html";
+            } else {
+                alert(data.detail || 'Ошибка входа');
+            }
+        } catch (err) {
+            alert('Ошибка соединения с сервером');
+        }
+    });
+
+    // Регистрация
+    document.getElementById('btnregister').addEventListener('click', async () => {
+        const login = document.getElementById('login').value;
+        const password = document.getElementById('password').value;
+        const group = document.getElementById('group-select').value;
+
+        const formData = new URLSearchParams();
+        formData.append('login', login);
+        formData.append('password', password);
+        formData.append('group', group);
+
+        try {
+            const res = await fetch('http://localhost:8000/register', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: formData
+            });
+
+            const data = await res.json();
+            if (res.ok) {
+                alert(data.message);
+                loginBg.classList.remove('expanded');
+                setTimeout(() => {
+                    registerForm.classList.add('hidden');
+                    authForm.classList.remove('hidden');
+                }, 300);
+            } else {
+                alert(data.detail || 'Ошибка регистрации');
+            }
+        } catch (err) {
+            alert('Ошибка соединения с сервером');
+        }
+    });
+});
+
+</script>
+
+</body>
+</html>
