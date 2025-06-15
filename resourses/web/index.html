@@ -604,7 +604,6 @@ function get_day(id) {
     if (!v.hasEventListener) {
         v.addEventListener('click', function (d) {
             var day_week = d.target.id; // Получаем ID дня недели
-            alert(`Выбран день: ${day_week}`);
             window.global_var = day_week; // Устанавливаем глобальную переменную
         });
         v.hasEventListener = true;
@@ -625,7 +624,7 @@ async function get_rasp() {
             return;
         }
 
-        alert(`Отправка запроса: группа = ${group}, день = ${day_week}`);
+       
         const response = await fetch(`/group1/?group=${group}&day_week=${day_week}`);
         const result = await response.json();
 

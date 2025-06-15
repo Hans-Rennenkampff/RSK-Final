@@ -8,6 +8,30 @@
     <link rel="stylesheet" href="auth.css">
 </head>
 <body>
+    <div id="custom-alert" style="display: none; position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.4); 
+     justify-content: center; align-items: center; 
+    z-index: 9999;">
+  <div style="background: white; padding: 24px 20px; border-radius: 16px; 
+      width: 90%; max-width: 400px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); 
+      font-family: 'Segoe UI', sans-serif; text-align: center; animation: fadeIn 0.3s ease;">
+    <img src="https://i.postimg.cc/mgpvCCFd/rsklogo.png" alt="RSK Logo" style="width: 60px; margin-bottom: 12px;">
+    <h3 style="margin-bottom: 12px; font-size: 18px; color: #222;">Уведомление</h3>
+    <p id="custom-alert-message" style="margin-bottom: 20px; font-size: 16px; color: #444;"></p>
+    <button onclick="hideAlert()" style="padding: 10px 24px; background-color: #D32F2F;
+        color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer;">
+      OK
+    </button>
+  </div>
+</div>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+</style>
+
     <div class="overlay" style="background: url('https://i.postimg.cc/L6st73YX/artistic-blurry-colorful-wallpaper-background-1.jpg') no-repeat center center fixed; background-size: cover;"></div>
 
     <div class="login-bg">
@@ -119,6 +143,15 @@
     </div>
 
 <script>
+
+  function showAlert(message) {
+    document.getElementById("custom-alert-message").innerText = message;
+    document.getElementById("custom-alert").style.display = "flex";
+  }
+
+  function hideAlert() {
+    document.getElementById("custom-alert").style.display = "none";
+  }
 document.addEventListener('DOMContentLoaded', () => {
     const loginBg = document.querySelector('.login-bg');
     const authForm = document.querySelector('.auth-form');
@@ -175,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('password', password);
 
         try {
-            const res = await fetch('http://localhost:8000/login', {
+            const res = await fetch('/login', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 body: formData
@@ -188,10 +221,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('password', password);
                 window.location.href = "authorized.html";
             } else {
-                alert(data.detail || 'Ошибка входа');
+                showAlert(data.detail || 'Ошибка входа');
             }
         } catch (err) {
-            alert('Ошибка соединения с сервером');
+            showAlert('Ошибка соединения с сервером');
         }
     });
 
@@ -207,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('group', group);
 
         try {
-            const res = await fetch('http://localhost:8000/register', {
+            const res = await fetch('/register', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 body: formData
@@ -215,17 +248,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const data = await res.json();
             if (res.ok) {
-                alert(data.message);
+                showAlert(data.message);
                 loginBg.classList.remove('expanded');
                 setTimeout(() => {
                     registerForm.classList.add('hidden');
                     authForm.classList.remove('hidden');
                 }, 300);
             } else {
-                alert(data.detail || 'Ошибка регистрации');
+                showAlert(data.detail || 'Ошибка регистрации');
             }
         } catch (err) {
-            alert('Ошибка соединения с сервером');
+            showAlert('Ошибка соединения с сервером');
         }
     });
 });

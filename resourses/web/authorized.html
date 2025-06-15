@@ -300,6 +300,30 @@
   </style>
 </head>
 <body>
+  <div id="custom-alert" style="display: none; position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.4); 
+     justify-content: center; align-items: center; 
+    z-index: 9999;">
+  <div style="background: white; padding: 24px 20px; border-radius: 16px; 
+      width: 90%; max-width: 400px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); 
+      font-family: 'Segoe UI', sans-serif; text-align: center; animation: fadeIn 0.3s ease;">
+    <img src="https://i.postimg.cc/mgpvCCFd/rsklogo.png" alt="RSK Logo" style="width: 60px; margin-bottom: 12px;">
+    <h3 style="margin-bottom: 12px; font-size: 18px; color: #222;">Уведомление</h3>
+    <p id="custom-alert-message" style="margin-bottom: 20px; font-size: 16px; color: #444;"></p>
+    <button onclick="hideAlert()" style="padding: 10px 24px; background-color: #D32F2F;
+        color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer;">
+      OK
+    </button>
+  </div>
+</div>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+</style>
+
   <header>
     <div class="burger-menu">
       <div class="burger-icon" id="burgerIcon">
@@ -349,6 +373,15 @@
   <table id="table"></table>
 
   <script>
+  function showAlert(message) {
+    document.getElementById("custom-alert-message").innerText = message;
+    document.getElementById("custom-alert").style.display = "flex";
+  }
+
+  function hideAlert() {
+    document.getElementById("custom-alert").style.display = "none";
+  }
+
     function applyTheme(theme) {
       const themeLink = document.getElementById("theme-link");
       themeLink.href = `theme-authorized-${theme}.css`;
@@ -435,9 +468,9 @@
 
     async function loadSchedule() {
       const token = localStorage.getItem("token");
-      if (!token) return alert("Нет токена");
+      if (!token) return showAlert("Нет токена");
 
-      const res = await fetch("http://localhost:8000/user-info", {
+      const res = await fetch("/user-info", {
         headers: { Authorization: "Bearer " + token }
       });
       const user = await res.json();
@@ -447,7 +480,7 @@
       const days = ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"];
       document.getElementById("info").textContent = "РАСПИСАНИЕ НА: " + days[day];
 
-      const raspRes = await fetch(`http://localhost:8000/group1?group=${group}&day_week=${day}`);
+      const raspRes = await fetch(`/group1?group=${group}&day_week=${day}`);
       const raspData = await raspRes.json();
 
       const table = document.getElementById("table");
